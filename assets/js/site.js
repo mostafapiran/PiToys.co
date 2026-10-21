@@ -44,12 +44,16 @@
     });
 
     if (productCount) {
-      productCount.textContent = `${visibleCount.toLocaleString("en-US")} models available`;
+      productCount.textContent = `${visibleCount.toLocaleString("en-US")} ${visibleCount === 1 ? "figure" : "figures"}`;
     }
   };
 
   filters.forEach((filter) => {
     filter.addEventListener("click", () => updateCatalog(filter.dataset.filter));
+  });
+
+  document.querySelectorAll("[data-collection-link]").forEach((link) => {
+    link.addEventListener("click", () => updateCatalog(link.dataset.collectionLink));
   });
 
   const year = document.querySelector("#year");
